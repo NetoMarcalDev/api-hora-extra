@@ -11,7 +11,7 @@ export class HoraExtraController {
     ){}
 
     @Post()
-    createTask(@Body() createHoraExtraDto: CreateHoraExtraDto): Promise<HoraExtra> {
+    createHoraExtra(@Body() createHoraExtraDto: CreateHoraExtraDto): Promise<HoraExtra> {
         return this.horaExtraService.createHoraExtra(createHoraExtraDto);
     }
 
