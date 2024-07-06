@@ -12,4 +12,10 @@ export class AuthController {
         return this.authService.cadastroUsuario(authCredentialsDto);
     }
 
+    @Post('/acessar')
+    acessar(@Body() authCredentialsDto: AuthCredentialsDto): Promise<string>{
+        return this.authService.ecessar(authCredentialsDto);
+    }
+
+
 }
