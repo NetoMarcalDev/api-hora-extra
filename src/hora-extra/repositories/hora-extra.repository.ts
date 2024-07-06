@@ -39,7 +39,7 @@ export class HoraExtraRepository extends Repository<HoraExtra> {
         
         if (search) {
             query.andWhere(
-              '(LOWER(horaExtra.usuario) LIKE LOWER(:search)',
+              '(LOWER(horaExtra.usuario) LIKE LOWER(:search))',
               { search: `%${search}%` },
             );
           }
