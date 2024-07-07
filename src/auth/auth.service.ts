@@ -5,6 +5,7 @@ import { UsuariosRepository } from './repositories/usuario.repository';
 import { AuthCredentialsDto } from './dto/auth-credentials.dto';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
+import { JwtPayload } from './jwt-payload.interface';
 
 @Injectable()
 export class AuthService {
@@ -23,7 +24,10 @@ export class AuthService {
         const usuario = await this.usuariosRepository.findOne({ descricao });
     
         if(usuario && (await bcrypt.compare(senha, usuario.senha))) {
-          return 'success';
+            const payload: JwtPayload =  { descricao };
+            const accessToken: string = await this.jwtService.sign(payload);
+            return accessToken;
+      
         } else {
           throw new UnauthorizedException('Usuário ou senha invalidos.');
         }    
