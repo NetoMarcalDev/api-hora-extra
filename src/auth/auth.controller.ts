@@ -13,7 +13,7 @@ export class AuthController {
     }
 
     @Post('/acessar')
-    acessar(@Body() authCredentialsDto: AuthCredentialsDto): Promise<string>{
+    acessar(@Body() authCredentialsDto: AuthCredentialsDto): Promise<{ accessToken: string }>{
         return this.authService.ecessar(authCredentialsDto);
     }
 
