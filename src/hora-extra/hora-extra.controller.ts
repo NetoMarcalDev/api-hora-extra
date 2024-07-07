@@ -1,10 +1,13 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Get, Post, Query,  } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { HoraExtraService } from './hora-extra.service';
 import { CreateHoraExtraDto } from './dto/create-hora-extra.dto';
 import { HoraExtra } from './entities/hora-extra.entity';
 import { GetHoraExtraFiltroDto } from './dto/get-hora-extra-filtro.dto';
+import { AuthGuard } from '@nestjs/passport';
 
+
+@UseGuards(AuthGuard())
 @Controller('hora-extra')
 export class HoraExtraController {
     constructor(
