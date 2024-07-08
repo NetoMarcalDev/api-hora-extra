@@ -21,10 +21,10 @@ export class HoraExtraController {
 
     @Get()
     getHoraExtra(
-        @Query() filtroDto: GetHoraExtraFiltroDto
-      ): Promise<HoraExtra[]> {
-        return this.horaExtraService.getHoraExtra(filtroDto);
-      }
+      @Query() filtroDto: GetHoraExtraFiltroDto
+    ): Promise<HoraExtra[]> {
+      return this.horaExtraService.getHoraExtra(filtroDto);
+    }
   
 
 }

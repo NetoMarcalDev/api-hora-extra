@@ -17,8 +17,8 @@ import { JwtStrategy } from './jwt.strategy';
     TypeOrmModule.forFeature([UsuariosRepository]),
     AuthModule,
   ],
-  providers: [AuthService, PassportModule],
   controllers: [AuthController],
+  providers: [AuthService, JwtStrategy],
   exports: [JwtStrategy, PassportModule],
 })
 export class AuthModule {}
