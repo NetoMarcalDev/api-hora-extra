@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Usuario } from 'src/auth/entities/user.entity';
 @Entity()
 export class HoraExtra {
     @PrimaryGeneratedColumn('increment')
@@ -29,5 +29,8 @@ export class HoraExtra {
 
     @Column()
     dia_semana: string;
+
+    @ManyToOne((type) => Usuario, (usuarioEntidade) => usuarioEntidade.horaExtra, { eager: false } )
+    usuarioEntidade: Usuario
 
 }
