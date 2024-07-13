@@ -8,7 +8,7 @@ export class HoraExtra {
     id: number;
 
     @Column()
-    usuario: string;
+    descrica: string;
 
     @Column()
     estabelecimento: string;
@@ -31,9 +31,8 @@ export class HoraExtra {
     @Column()
     dia_semana: string;
 
-    @ManyToOne((type) => Usuario, (usuarioEntidade) => usuarioEntidade.horaExtra, { eager: false } )
-
+    @ManyToOne((type) => Usuario, (usuario) => usuario.descricao, { eager: false } )
     @Exclude({ toPlainOnly: true })
-    usuarioEntidade: Usuario
+    usuario: Usuario
 
 }

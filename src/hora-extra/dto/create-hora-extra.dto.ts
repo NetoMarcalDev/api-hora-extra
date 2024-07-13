@@ -3,7 +3,7 @@ import { IsNotEmpty } from 'class-validator';
 
 export class CreateHoraExtraDto {
     @IsNotEmpty()
-    usuario: string;
+    descricao: string;
 
     @IsNotEmpty()
     estabelecimento: string;

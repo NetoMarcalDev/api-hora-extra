@@ -9,7 +9,7 @@ import { Usuario } from 'src/auth/entities/user.entity';
 export class HoraExtraRepository extends Repository<HoraExtra> {
     async createHoraExtra( createHoraExtraDto: CreateHoraExtraDto, usuarioEntidade: Usuario): Promise<HoraExtra> {
         const {     
-            usuario,
+            descricao,
             estabelecimento,
             solicitante,
             data,
@@ -21,7 +21,6 @@ export class HoraExtraRepository extends Repository<HoraExtra> {
         } = createHoraExtraDto;
 
         const horaExtra = await this.create({     
-            usuario,
             estabelecimento,
             solicitante,
             data,

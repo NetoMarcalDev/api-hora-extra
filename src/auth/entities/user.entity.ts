@@ -11,8 +11,4 @@ export class Usuario {
 
     @Column()
     senha: string;
-
-    @OneToMany((type) => HoraExtra, (horaExtra) => horaExtra.usuario, { eager: true })
-    horaExtra: HoraExtra[];
-
 }
