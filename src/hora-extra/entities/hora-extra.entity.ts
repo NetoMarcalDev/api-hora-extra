@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { Usuario } from 'src/auth/entities/user.entity';
+import { Exclude } from 'class-transformer';
 @Entity()
 export class HoraExtra {
     @PrimaryGeneratedColumn('increment')
@@ -31,6 +32,8 @@ export class HoraExtra {
     dia_semana: string;
 
     @ManyToOne((type) => Usuario, (usuarioEntidade) => usuarioEntidade.horaExtra, { eager: false } )
+
+    @Exclude({ toPlainOnly: true })
     usuarioEntidade: Usuario
 
 }
