@@ -34,9 +34,13 @@ export class HoraExtraRepository extends Repository<HoraExtra> {
         return horaExtra;
     }
 
-    async getHoraExtra(getHoraExtraFiltroDto: GetHoraExtraFiltroDto): Promise<HoraExtra[]> {
+    async getHoraExtra(
+        getHoraExtraFiltroDto: GetHoraExtraFiltroDto,
+        usuario: Usuario
+    ): Promise<HoraExtra[]> {
         const { search } = getHoraExtraFiltroDto;
         const query = this.createQueryBuilder('horaExtra');
+        query.where({ usuario })
         
         if (search) {
             query.andWhere(

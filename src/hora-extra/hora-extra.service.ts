@@ -21,8 +21,11 @@ export class HoraExtraService {
         return this.horaExtraRepository.createHoraExtra(createHoraExtraDto, usuario);
     }
 
-    getHoraExtra(getHoraExtraFiltroDto: GetHoraExtraFiltroDto): Promise<HoraExtra[]> {
-        return this.horaExtraRepository.getHoraExtra(getHoraExtraFiltroDto);
+    getHoraExtra(
+        getHoraExtraFiltroDto: GetHoraExtraFiltroDto,
+        usuario: Usuario,
+    ): Promise<HoraExtra[]> {
+        return this.horaExtraRepository.getHoraExtra(getHoraExtraFiltroDto, usuario);
     }
     
 }

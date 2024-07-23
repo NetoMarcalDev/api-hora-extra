@@ -25,9 +25,10 @@ export class HoraExtraController {
 
     @Get()
     getHoraExtra(
-      @Query() filtroDto: GetHoraExtraFiltroDto
+      @Query() filtroDto: GetHoraExtraFiltroDto,
+      @GetUser() usuario: Usuario,
     ): Promise<HoraExtra[]> {
-      return this.horaExtraService.getHoraExtra(filtroDto);
+      return this.horaExtraService.getHoraExtra(filtroDto, usuario);
     }  
 
 }
