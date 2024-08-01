@@ -8,7 +8,7 @@ export class HoraExtra {
     id: number;
 
     @Column()
-    descrica: string;
+    descricao: string;
 
     @Column()
     estabelecimento: string;

@@ -21,6 +21,7 @@ export class HoraExtraRepository extends Repository<HoraExtra> {
         } = createHoraExtraDto;
 
         const horaExtra = await this.create({     
+            descricao,
             estabelecimento,
             solicitante,
             data,
