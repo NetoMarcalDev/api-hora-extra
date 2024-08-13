@@ -6,6 +6,7 @@ import { CreateHoraExtraDto } from './dto/create-hora-extra.dto';
 import { HoraExtra } from './entities/hora-extra.entity';
 import { GetHoraExtraFiltroDto } from './dto/get-hora-extra-filtro.dto';
 import { Usuario } from 'src/auth/entities/user.entity';
+import { UpdateHoraExtraDto } from './dto/update-hora-extra.dto';
 
 @Injectable()
 export class HoraExtraService {
@@ -38,7 +39,19 @@ export class HoraExtraService {
           throw new NotFoundException(`Hora extra de Id: ${id}, não encontrada.`);
         }
         return found;
-      }
-  
-    
+    }
+
+    async updateHoraExtra(
+        id: string,
+        horaExtra: UpdateHoraExtraDto,
+        usuario: Usuario
+    ): Promise<HoraExtra> {
+        const dados = await this.getHoraExtraById(id, usuario);
+        dados.descricao = horaExtra.descricao;
+        dados.estabelecimento = horaExtra.estabelecimento;
+
+        await this.horaExtraRepository.save(dados);
+        return dados;
+    }
+      
 }
