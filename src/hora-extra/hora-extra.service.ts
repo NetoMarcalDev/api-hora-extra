@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Body, Injectable, Post } from '@nestjs/common';
+import { Body, Injectable, NotFoundException, Post } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { HoraExtraRepository } from './repositories/hora-extra.repository';
 import { CreateHoraExtraDto } from './dto/create-hora-extra.dto';
@@ -14,18 +14,31 @@ export class HoraExtraService {
         private horaExtraRepository: HoraExtraRepository,
     ){}
 
-    createHoraExtra(
+    async createHoraExtra(
         @Body() createHoraExtraDto: CreateHoraExtraDto,
         usuario: Usuario,
     ): Promise<HoraExtra> {
         return this.horaExtraRepository.createHoraExtra(createHoraExtraDto, usuario);
     }
 
-    getHoraExtra(
+    async getHoraExtra(
         getHoraExtraFiltroDto: GetHoraExtraFiltroDto,
         usuario: Usuario,
     ): Promise<HoraExtra[]> {
         return this.horaExtraRepository.getHoraExtra(getHoraExtraFiltroDto, usuario);
     }
+
+    async getHoraExtraById(
+        id: string, 
+        usuario: Usuario,
+    ): Promise<HoraExtra> {
+        const found = await this.horaExtraRepository.findOne({ where: { id, usuario } });
+    
+        if (!found) {
+          throw new NotFoundException(`Hora extra de Id: ${id}, não encontrada.`);
+        }
+        return found;
+      }
+  
     
 }
