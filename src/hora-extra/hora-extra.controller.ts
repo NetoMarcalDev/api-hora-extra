@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Get, Param, Patch, Post, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UseGuards } from '@nestjs/common';
 import { HoraExtraService } from './hora-extra.service';
 import { CreateHoraExtraDto } from './dto/create-hora-extra.dto';
 import { HoraExtra } from './entities/hora-extra.entity';
@@ -47,6 +47,14 @@ export class HoraExtraController {
       @GetUser() usuario: Usuario
     ): Promise<HoraExtra> {
       return this.horaExtraService.updateHoraExtra(id, horaExtra, usuario);
+    }
+
+    @Delete('/:id')
+    deleteHoraExtra(
+      @Param('id') id: number,
+      @GetUser() usuario: Usuario
+    ): Promise<void> {
+      return this.horaExtraService.deleteHoraExtra(id, usuario);
     }
 
 }

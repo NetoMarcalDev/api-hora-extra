@@ -53,5 +53,15 @@ export class HoraExtraService {
         await this.horaExtraRepository.save(dados);
         return dados;
     }
+
+    async deleteHoraExtra(
+        id: number, 
+        usuario: Usuario
+    ): Promise<void> {
+        const result = await this.horaExtraRepository.delete({ id, usuario });
+        if(result.affected === 0) {
+            throw new NotFoundException(`Hora extra de Id: ${id}, não encontrada.`);
+        }
+    }
       
 }
