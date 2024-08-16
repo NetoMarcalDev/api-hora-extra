@@ -4,11 +4,13 @@ import { HoraExtraModule } from './hora-extra/hora-extra.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { configValidationSchema } from './config.schema';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: [`.env.stage.${ process.env.STAGE }`],
+      validationSchema: configValidationSchema,
     }),
     HoraExtraModule,
     TypeOrmModule.forRootAsync({
