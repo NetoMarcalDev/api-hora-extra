@@ -47,6 +47,7 @@ export class HoraExtraService {
         usuario: Usuario
     ): Promise<HoraExtra> {
         const dados = await this.getHoraExtraById(id, usuario);
+        console.log(JSON.stringify(horaExtra));
         dados.descricao = horaExtra.descricao;
         dados.estabelecimento = horaExtra.estabelecimento;
 
